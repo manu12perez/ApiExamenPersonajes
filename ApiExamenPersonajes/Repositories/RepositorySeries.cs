@@ -24,7 +24,7 @@ namespace ApiExamenPersonajes.Repositories
         }
 
         public async Task UpdatePersonajeAsync
-            (int idPersonaje, int idSerie )
+            (int idPersonaje, int idSerie)
         {
             Personaje personaje = await this.FindPersonajeAsync(idPersonaje);
             personaje.IdSerie = idSerie;
@@ -42,7 +42,7 @@ namespace ApiExamenPersonajes.Repositories
             return await this.context.Series.FirstOrDefaultAsync(x => x.IdSerie == idSerie);
         }
 
-        public async Task<List<Personaje>> GetPersonajesBySerie(int idSerie)
+        public async Task<List<Personaje>> GetPersonajesBySerieAsync(int idSerie)
         {
             Serie serie = await this.context.Series.FirstOrDefaultAsync(x => x.IdSerie == idSerie);
             List<Personaje> personajes = await this.context.Personajes.Where(x => x.IdSerie == serie.IdSerie).ToListAsync();
